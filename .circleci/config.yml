@@ -15,5 +15,5 @@ workflows:
   version: 2.1
   aws-cli:
     jobs:
-      push-to-ecr
+    - push-to-ecr
 
