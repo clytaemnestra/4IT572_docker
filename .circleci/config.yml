@@ -6,7 +6,7 @@ jobs:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
-      - run: (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin $URL
+      - run: aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $URL
       - run: docker buld -t $URL/devops:latest -t $URL/devops:$CIRCLE_BUILD_NUM .
       - run: docker push $URL/devops:$CIRCLE_BUILD_NUM
       - run: docker push $URL/devops:latest
